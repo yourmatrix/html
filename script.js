@@ -77,8 +77,6 @@ function activarGlitch() {
         glitchScreen.style.display = 'none';  // Ocultar la pantalla de glitch
         reiniciarSistema(); // Restablecer el estado después del glitch
     }, 5000);
-
-    // Opcional: Reproduce un sonido o animación de glitch durante el efecto.
 }
 
 // Reiniciar el sistema después del glitch
@@ -98,86 +96,85 @@ function generarTextoAleatorioZalgo() {
         "M̶͉̺̘͉̣̝̦̋̿̍͒͠",
         "O̵̡͔͎͉̗̠̰̲̙͑̌͒̓̾̄",
         "T̴͉̩͓̥̮̣͎̟̎̇̈́͒̔̈",
-        "يَةِ", // texto arabe
-        "صَفْحَةٍ", // texto arabe
-        "ظَاهِرَةِ", // texto arabe
-        "اِحْتِمَالُ"  // texto arabe
+        "يَةِ", // texto árabe
+        "صَفْحَةٍ", // texto árabe
+        "ظَاهِرَةِ", // texto árabe
+        "اِحْتِمَالُ"  // texto árabe
     ];
     const randIndex = Math.floor(Math.random() * charsZalgo.length);
     return charsZalgo[randIndex];
 }
 
-
+// Procesa los comandos escritos en la consola
 function procesarComando(comando) {
     const comandos = {
         "misterio": "Un lugar oculto en los archivos...",
         "clave": "Sistemas abiertos en archivo remoto.",
-        "desconocido": "Revelacion inminente.",
-        "despertar": "Estas listo para ver lo que no deberias?",
+        "desconocido": "Revelación inminente.",
+        "despertar": "¿Estás listo para ver lo que no deberías?",
         "404": "Archivo no encontrado. ¿Lo perdiste o lo ocultaste?",
-        "luz": "A veces, la luz revela mas de lo que oculta.",
-        "oculto": "Lo que buscas esta justo ante ti. Solo tienes que mirar mas alla de lo evidente.",
+        "luz": "A veces, la luz revela más de lo que oculta.",
+        "oculto": "Lo que buscas está justo ante ti. Solo tienes que mirar más allá de lo evidente.",
         "malware": "Acceso denegado. Sistema comprometido.",
         "control": "El control nunca fue tuyo.",
         "inverso": "Texto invertido. Usa 'revertir' para volver a la normalidad.",
         "revertir": "Texto restaurado.",
         "laberinto": "Bienvenido al laberinto. Ingresa direcciones: norte, sur, este, oeste.",
         "escape": "No puedes escapar de lo inevitable.",
-        "paradoja": "Ayer te lo dije. Hoy lo olvidaste. Manana recordaras lo que nunca paso.",
-        "memoria": "No es como lo recuerdas, ¿verdad? El tiempo no esta de tu lado.",
+        "paradoja": "Ayer te lo dije. Hoy lo olvidaste. Mañana recordarás lo que nunca pasó.",
+        "memoria": "No es como lo recuerdas, ¿verdad? El tiempo no está de tu lado.",
         "espera": "Esperando respuesta...",
-        "eco": "Todo lo que escribas se repetira hasta que lo detengas.",
+        "eco": "Todo lo que escribas se repetirá hasta que lo detengas.",
         "silencio": "El eco ha desaparecido.",
         "bucle": "Reconectando...",
-        "anomalía": "El sistema se reiniciara pronto debido a una anomalia."
+        "anomalía": "El sistema se reiniciará pronto debido a una anomalía."
     };
 
-    // Nuevos comandos para mostrar la imagen moviendose
+    // Comandos para mostrar la imagen en movimiento
     const comandosImagen = ["pito", "johan", "tio", "kbro", "goni", "goñi"];
 
+    // Comandos para mostrar otra imagen
+    const comandosImagenAlternativa = ["berenjena", "gampi", "pinga"];
+
+    // Procesa los comandos de imagen flotante
     if (comandosImagen.includes(comando)) {
         mostrarImagenMoviendose();
-    } else if (comando === "alonzo") {
-        iniciarLaberinto();
-    } else if (comando === "inverso") {
-        invertirTexto(true);
-    } else if (comando === "revertir") {
-        invertirTexto(false);
-    } else if (comando === "bucle") {
-        iniciarBucle();
-    } else if (comando === "eco") {
-        iniciarEco();
-    } else if (comando === "silencio") {
-        detenerEco();
-    } else if (comando === "espera") {
-        esperarRespuesta();
-    } else {
-        cmdLog.textContent += `> ${comando}\n`;
+        return; // Salimos de la función para no procesar otros comandos
+    }
 
-        if (comandos[comando]) {
-            cmdLog.textContent += `${comandos[comando]}\n`;
+    // Procesa los comandos de otra imagen
+    if (comandosImagenAlternativa.includes(comando)) {
+        mostrarEmojisYImagen();
+        return; // Salimos de la función para no procesar otros comandos
+    }
 
-            if (comando === "404" || comando === "malware" || comando === "control") {
-                errorVisual();
-            }
+    // Procesa otros comandos de texto
+    cmdLog.textContent += `> ${comando}\n`;
 
-            if (comando === "despertar") {
-                efectoVisual();
-            }
+    if (comandos[comando]) {
+        cmdLog.textContent += `${comandos[comando]}\n`;
 
-            if (comando === "memoria") {
-                memoriaFragmentada();
-            }
-
-            if (comando === "anomalía") {
-                reinicioAnomalia();
-            }
-        } else {
-            cmdLog.textContent += `Comando no reconocido...\n`;
+        if (comando === "404" || comando === "malware" || comando === "control") {
+            errorVisual();
         }
+
+        if (comando === "despertar") {
+            efectoVisual();
+        }
+
+        if (comando === "memoria") {
+            memoriaFragmentada();
+        }
+
+        if (comando === "anomalía") {
+            reinicioAnomalia();
+        }
+    } else {
+        cmdLog.textContent += `Comando no reconocido...\n`;
     }
 }
 
+// Función para mostrar la imagen en movimiento
 function mostrarImagenMoviendose() {
     const imagenUrl = "https://f9fff1a938.cbaul-cdnwnd.com/274989ceae8e977eab31f993f8d1154a/200000024-8002d8002f/700/91c65f78-3407-4db7-9fc4-0dbf70dc6c0b.webp";
     const imagen = document.createElement("img");
@@ -199,7 +196,7 @@ function mostrarImagenMoviendose() {
             imagen.style.left = `${x}px`;
             imagen.style.top = `${y}px`;
 
-            // Generar texto zalgo o arabe aleatorio
+            // Generar texto Zalgo o árabe aleatorio
             const textoZalgo = generarTextoAleatorioZalgo();
             const divTexto = document.createElement("div");
             divTexto.textContent = textoZalgo;
@@ -225,18 +222,66 @@ function mostrarImagenMoviendose() {
     moverImagen();
 }
 
-function generarTextoAleatorioZalgo() {
-    const charsZalgo = [
-        "A̷̜̗̫̘̓̀̾̓̈́͠",
-        "L̸̲̩͚̣̣͊͋̋̈̄̾̕̕͠",
-        "M̶͉̺̘͉̣̝̦̋̿̍͒͠",
-        "O̵̡͔͎͉̗̠̰̲̙͑̌͒̓̾̄",
-        "T̴͉̩͓̥̮̣͎̟̎̇̈́͒̔̈",
-        "يَةِ", // texto arabe
-        "صَفْحَةٍ", // texto arabe
-        "ظَاهِرَةِ", // texto arabe
-        "اِحْتِمَالُ"  // texto arabe
-    ];
-    const randIndex = Math.floor(Math.random() * charsZalgo.length);
-    return charsZalgo[randIndex];
+// Función para mostrar los emojis y la imagen
+function mostrarEmojisYImagen() {
+    const tiempoMovimiento = 5000; // 5 segundos
+    const emoji = "🍆🍆🍆"; // Emoji de berenjena
+    const cantidadEmojis = 10; // Cantidad de emojis a mostrar
+
+    // Mover emojis aleatorios
+    for (let i = 0; i < cantidadEmojis; i++) {
+        const divEmoji = document.createElement("div");
+        divEmoji.textContent = emoji;
+        divEmoji.style.position = "absolute";
+        divEmoji.style.fontSize = "30px"; // Tamaño del emoji
+        divEmoji.style.zIndex = "9999";
+
+        document.body.appendChild(divEmoji);
+
+        // Mover el emoji a una posición aleatoria
+        moverEmojiAleatorio(divEmoji, tiempoMovimiento);
+    }
+
+    // Mostrar la imagen en el mismo tiempo
+    const imagenUrlAlternativa = "https://4a0152e3a4.cbaul-cdnwnd.com/4a3c4b1cd2ab02fb8561cb9536085dd0/200000009-156ae156b1/450/kbro.webp";
+    const imagenAlternativa = document.createElement("img");
+    imagenAlternativa.src = imagenUrlAlternativa;
+    imagenAlternativa.style.position = "absolute";
+    imagenAlternativa.style.width = "150px";
+    imagenAlternativa.style.zIndex = "9999";
+
+    document.body.appendChild(imagenAlternativa);
+
+    // Posicionar la imagen en un lugar aleatorio
+    const xImagen = Math.random() * (window.innerWidth - imagenAlternativa.width);
+    const yImagen = Math.random() * (window.innerHeight - imagenAlternativa.height);
+
+    imagenAlternativa.style.left = `${xImagen}px`;
+    imagenAlternativa.style.top = `${yImagen}px`;
+
+    // Eliminar la imagen y emojis después de 5 segundos
+    setTimeout(() => {
+        imagenAlternativa.remove();
+        const emojis = document.querySelectorAll("div"); // Selecciona todos los divs de emojis
+        emojis.forEach((emojiDiv) => emojiDiv.remove()); // Elimina cada div de emoji
+    }, tiempoMovimiento);
+}
+
+// Función para mover el emoji aleatoriamente
+function moverEmojiAleatorio(divEmoji, tiempoMovimiento) {
+    const tiempoInicio = Date.now();
+
+    function mover() {
+        if (Date.now() - tiempoInicio < tiempoMovimiento) {
+            const x = Math.random() * (window.innerWidth - divEmoji.offsetWidth);
+            const y = Math.random() * (window.innerHeight - divEmoji.offsetHeight);
+
+            divEmoji.style.left = `${x}px`;
+            divEmoji.style.top = `${y}px`;
+
+            requestAnimationFrame(mover);
+        }
+    }
+
+    mover();
 }
