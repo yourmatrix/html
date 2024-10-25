@@ -265,7 +265,7 @@ function mostrarEmojisYImagen() {
         const emojis = document.querySelectorAll("div"); // Selecciona todos los divs de emojis
         emojis.forEach((emojiDiv) => emojiDiv.remove()); // Elimina cada div de emoji
 
-        // Cambiar el color del texto de la consola a morado
+        // Asegurarse de que la consola de comandos siga visible y cambie el color del texto
         cambiarColorConsola("purple");
     }, tiempoMovimiento);
 }
@@ -292,4 +292,21 @@ function moverEmojiAleatorio(divEmoji, tiempoMovimiento) {
 // Función para cambiar el color del texto de la consola
 function cambiarColorConsola(color) {
     cmdLog.style.color = color; // Cambia el color del texto de la consola
+    // Asegúrate de que la consola siga visible
+    cmdLog.style.display = "block"; // Asegura que la consola esté visible
 }
+
+// Inicializar la consola
+const cmdLog = document.createElement("div");
+cmdLog.style.position = "fixed";
+cmdLog.style.bottom = "20px";
+cmdLog.style.left = "20px";
+cmdLog.style.width = "300px";
+cmdLog.style.height = "150px";
+cmdLog.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+cmdLog.style.color = "white";
+cmdLog.style.padding = "10px";
+cmdLog.style.overflowY = "scroll";
+cmdLog.style.zIndex = "9999";
+cmdLog.textContent = "Consola misteriosa activa. Escribe un comando...";
+document.body.appendChild(cmdLog);
