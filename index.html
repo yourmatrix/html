@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B̶i̷e̷n̸v̶e̸n̶i̶d̸o̸s̸ ̶a̸l̴ ̶f̷i̴n̶a̵l̵...</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Pantalla negra inicial para ingresar la contraseña -->
+    <div id="pantalla-negra">
+        <div id="comando-container">
+            <p>Introduce la contraseña:</p>
+            <input type="text" id="input-comando" autofocus>
+            <button id="btn-enviar">Enviar</button>
+            <p id="feedback"></p>
+            <p id="intentos-restantes">Intentos restantes: 5</p> <!-- Contador de intentos -->
+        </div>
+    </div>
+
+    <!-- Consola CMD oculta hasta que se ingrese la contraseña correcta -->
+    <div id="cmd-screen" class="hidden">
+        <div id="cmd-output">
+            <p id="cmd-intro">Consola misteriosa activa. Escribe un comando...</p>
+            <pre id="cmd-log"></pre>
+        </div>
+        <div id="cmd-input">
+            <label for="input-cmd">> </label>
+            <input type="text" id="input-cmd" autofocus>
+        </div>
+    </div>
+
+    <!-- Pantalla de glitch que aparece tras 5 intentos fallidos -->
+    <div id="glitch-screen" class="hidden">
+        <video id="video-static" autoplay loop muted>
+            <source src="https://thisisnotawebsitedotcom.com/assets/static-3.mp4" type="video/mp4">
+        </video>
+        <div id="glitch-text-container"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
