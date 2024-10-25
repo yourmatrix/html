@@ -77,6 +77,8 @@ function activarGlitch() {
         glitchScreen.style.display = 'none';  // Ocultar la pantalla de glitch
         reiniciarSistema(); // Restablecer el estado después del glitch
     }, 5000);
+
+    // Opcional: Reproduce un sonido o animación de glitch durante el efecto.
 }
 
 // Reiniciar el sistema después del glitch
@@ -86,23 +88,6 @@ function reiniciarSistema() {
     intentosRestantes.textContent = `Intentos restantes: ${MAX_INTENTOS}`;
     comandoContainer.style.display = 'block';  // Mostrar el campo de contraseña de nuevo
     pantallaNegra.style.display = 'block';     // Restaurar la pantalla negra
-}
-
-// Genera texto Zalgo aleatorio
-function generarTextoAleatorioZalgo() {
-    const charsZalgo = [
-        "A̷̜̗̫̘̓̀̾̓̈́͠",
-        "L̸̲̩͚̣̣͊͋̋̈̄̾̕̕͠",
-        "M̶͉̺̘͉̣̝̦̋̿̍͒͠",
-        "O̵̡͔͎͉̗̠̰̲̙͑̌͒̓̾̄",
-        "T̴͉̩͓̥̮̣͎̟̎̇̈́͒̔̈",
-        "يَةِ", // texto árabe
-        "صَفْحَةٍ", // texto árabe
-        "ظَاهِرَةِ", // texto árabe
-        "اِحْتِمَالُ"  // texto árabe
-    ];
-    const randIndex = Math.floor(Math.random() * charsZalgo.length);
-    return charsZalgo[randIndex];
 }
 
 // Procesa los comandos escritos en la consola
@@ -265,7 +250,7 @@ function mostrarEmojisYImagen() {
         const emojis = document.querySelectorAll("div"); // Selecciona todos los divs de emojis
         emojis.forEach((emojiDiv) => emojiDiv.remove()); // Elimina cada div de emoji
 
-        // Asegurarse de que la consola de comandos siga visible y cambie el color del texto
+        // Cambiar el color del texto de la consola a morado
         cambiarColorConsola("purple");
     }, tiempoMovimiento);
 }
@@ -292,21 +277,4 @@ function moverEmojiAleatorio(divEmoji, tiempoMovimiento) {
 // Función para cambiar el color del texto de la consola
 function cambiarColorConsola(color) {
     cmdLog.style.color = color; // Cambia el color del texto de la consola
-    // Asegúrate de que la consola siga visible
-    cmdLog.style.display = "block"; // Asegura que la consola esté visible
 }
-
-// Inicializar la consola
-const cmdLog = document.createElement("div");
-cmdLog.style.position = "fixed";
-cmdLog.style.bottom = "20px";
-cmdLog.style.left = "20px";
-cmdLog.style.width = "300px";
-cmdLog.style.height = "150px";
-cmdLog.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
-cmdLog.style.color = "white";
-cmdLog.style.padding = "10px";
-cmdLog.style.overflowY = "scroll";
-cmdLog.style.zIndex = "9999";
-cmdLog.textContent = "Consola misteriosa activa. Escribe un comando...";
-document.body.appendChild(cmdLog);
