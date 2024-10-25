@@ -264,6 +264,9 @@ function mostrarEmojisYImagen() {
         imagenAlternativa.remove();
         const emojis = document.querySelectorAll("div"); // Selecciona todos los divs de emojis
         emojis.forEach((emojiDiv) => emojiDiv.remove()); // Elimina cada div de emoji
+
+        // Cambiar el color del texto de la consola a morado
+        cambiarColorConsola("purple");
     }, tiempoMovimiento);
 }
 
@@ -284,4 +287,9 @@ function moverEmojiAleatorio(divEmoji, tiempoMovimiento) {
     }
 
     mover();
+}
+
+// Función para cambiar el color del texto de la consola
+function cambiarColorConsola(color) {
+    cmdLog.style.color = color; // Cambia el color del texto de la consola
 }
